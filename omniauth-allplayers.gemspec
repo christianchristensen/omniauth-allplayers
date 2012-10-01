@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = OmniAuth::AllPlayers::VERSION
   s.authors     = ["Chris Christensen"]
   s.email       = ["chris@allplayers.com"]
-  s.homepage    = "https://github.com/allplayers/omniauth-allplayers"
+  s.homepage    = "https://github.com/AllPlayers/omniauth-allplayers"
   s.summary     = %q{OmniAuth strategy for AllPlayers.com}
   s.description = %q{OmniAuth strategy for AllPlayers.com}
 
