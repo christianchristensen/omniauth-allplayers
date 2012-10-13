@@ -41,7 +41,9 @@ module OmniAuth
       def raw_info
         # This is a public API and does not need signing or authentication
         request = "/api/v1/rest/users/current.json"
-        @raw_info ||= MultiJson.decode(access_token.get(request).body)
+        resp_redir = access_token.get(request)
+        user_url = resp_redir['location']
+        @raw_info ||= MultiJson.load(access_token.get(user_url).body)
       rescue ::Errno::ETIMEDOUT
         raise ::Timeout::Error
       end
@@ -51,11 +53,6 @@ module OmniAuth
       def user_info
         @user_info ||= raw_info.nil? ? {} : raw_info
       end
-
-      #def request_phase
-      #  options[:authorize_params] = {:perms => options[:scope]} if options[:scope]
-      #  super
-      #end
     end
   end
 end
